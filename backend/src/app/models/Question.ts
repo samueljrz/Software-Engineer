@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn, Generated, CreateDateColumn } from 'typeorm';
-
+import { Entity, Column, PrimaryColumn, Generated, CreateDateColumn, ManyToOne, JoinTable } from 'typeorm';
+import { Administrator } from './Administrator'
 @Entity()
 export class Question {
 
-    @PrimaryColumn("varchar", {length: 20})
+    @PrimaryColumn("uuid", {length: 20})
     @Generated('uuid')
     id: string;
 
@@ -30,5 +30,8 @@ export class Question {
 
     @CreateDateColumn()
     created_at: Date;
+
+    @ManyToOne(() => Administrator, administrator => administrator.questions)
+    administrator: Administrator;
 
 }

@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, OneToMany } from 'typeorm';
 import { Simulated } from './Simulated'
+import { Question } from './Question'
 
 @Entity()
 export class Administrator {
@@ -18,4 +19,7 @@ export class Administrator {
 
     @OneToMany(() => Simulated, simulated => simulated.administrator)
     simulateds: Simulated[];
+
+    @OneToMany(() => Question, question => question.administrator)
+    questions: Question[];
 }

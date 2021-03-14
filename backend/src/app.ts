@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import 'reflect-metadata';
 import routes from './routes';
 import { errors } from 'celebrate'
 

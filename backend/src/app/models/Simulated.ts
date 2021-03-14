@@ -6,12 +6,12 @@ import { Administrator } from './Administrator'
 @Entity()
 export class Simulated {
 
-    @PrimaryColumn("varchar", {length: 20})
+    @PrimaryColumn("uuid", {length: 20})
     @Generated('uuid')
     id: string;
 
     @Column()
-    name: string;
+    nome: string;
 
     @Column()
     qtdquestion: number;

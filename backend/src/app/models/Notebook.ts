@@ -5,12 +5,12 @@ import { Question } from './Question'
 @Entity()
 export class Notebook {
 
-    @PrimaryColumn("varchar", {length: 20})
+    @PrimaryColumn("uuid", {length: 20})
     @Generated('uuid')
     id: string;
 
     @Column()
-    name: string;
+    nome: string;
 
     @CreateDateColumn()
     created_at: Date;

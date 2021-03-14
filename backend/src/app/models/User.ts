@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToMany, OneToMany, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToMany, OneToMany, JoinTable, JoinColumn } from 'typeorm';
 import { Question } from "./Question";
 import { Notebook } from './Notebook'
 import { Simulated } from './Simulated'
@@ -21,6 +21,7 @@ export class User {
     @ManyToMany(() => Question)
     @JoinTable()
     questions: Question[];
+
 
     @OneToMany(() => Notebook, notebook => notebook.user)
     notebooks: Notebook[];

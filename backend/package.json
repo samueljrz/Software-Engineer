@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "npx nodemon --exec ts-node src/server.ts",
     "dev:debug": "nodemon --inspect src/server.js",
-    "queue": "nodemon src/queue.js"
+    "queue": "nodemon src/queue.js",
+    "typeorm:migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "typeorm:migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "typeorm:migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate"
   },
   "compilerOptions": {
     "target": "es2016",
