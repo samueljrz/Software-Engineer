@@ -1,21 +1,21 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class RelationUserQuestion1615754266094 implements MigrationInterface {
-    name = 'RelationUserQuestion1615754266094'
+export class RelationUserQuestion1615760777846 implements MigrationInterface {
+    name = 'RelationUserQuestion1615760777846'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "temporary_user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "temporary_user"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "user"`);
+        await queryRunner.query(`CREATE TABLE "temporary_user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "temporary_user"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "user"`);
         await queryRunner.query(`DROP TABLE "user"`);
         await queryRunner.query(`ALTER TABLE "temporary_user" RENAME TO "user"`);
-        await queryRunner.query(`CREATE TABLE "temporary_administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "temporary_administrator"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "administrator"`);
+        await queryRunner.query(`CREATE TABLE "temporary_administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "temporary_administrator"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "administrator"`);
         await queryRunner.query(`DROP TABLE "administrator"`);
         await queryRunner.query(`ALTER TABLE "temporary_administrator" RENAME TO "administrator"`);
         await queryRunner.query(`CREATE TABLE "notebook_questions_question" ("notebookId" varchar(20) NOT NULL, "questionId" varchar(20) NOT NULL, PRIMARY KEY ("notebookId", "questionId"))`);
         await queryRunner.query(`CREATE INDEX "IDX_1a228f2f456f23e2f28a397951" ON "notebook_questions_question" ("notebookId") `);
         await queryRunner.query(`CREATE INDEX "IDX_83b34d7793df93a29b3136befc" ON "notebook_questions_question" ("questionId") `);
-        await queryRunner.query(`CREATE TABLE "user_questions_question" ("userCpf" varchar NOT NULL, "questionId" varchar(20) NOT NULL, "assertiva" boolean NOT NULL, PRIMARY KEY ("userCpf", "questionId"))`);
+        await queryRunner.query(`CREATE TABLE "user_questions_question" ("userCpf" varchar NOT NULL, "questionId" varchar(20) NOT NULL, PRIMARY KEY ("userCpf", "questionId"))`);
         await queryRunner.query(`CREATE INDEX "IDX_de8a5ed626172455aed308ca4b" ON "user_questions_question" ("userCpf") `);
         await queryRunner.query(`CREATE INDEX "IDX_7a9ff0f9f0e9b093d76d3c2797" ON "user_questions_question" ("questionId") `);
         await queryRunner.query(`CREATE TABLE "simulated_questions_question" ("simulatedId" varchar(20) NOT NULL, "questionId" varchar(20) NOT NULL, PRIMARY KEY ("simulatedId", "questionId"))`);
@@ -45,16 +45,16 @@ export class RelationUserQuestion1615754266094 implements MigrationInterface {
         await queryRunner.query(`INSERT INTO "temporary_notebook"("id", "nome", "created_at", "userCpf") SELECT "id", "nome", "created_at", "userCpf" FROM "notebook"`);
         await queryRunner.query(`DROP TABLE "notebook"`);
         await queryRunner.query(`ALTER TABLE "temporary_notebook" RENAME TO "notebook"`);
-        await queryRunner.query(`CREATE TABLE "temporary_user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')))`);
-        await queryRunner.query(`INSERT INTO "temporary_user"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "user"`);
+        await queryRunner.query(`CREATE TABLE "temporary_user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')))`);
+        await queryRunner.query(`INSERT INTO "temporary_user"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "user"`);
         await queryRunner.query(`DROP TABLE "user"`);
         await queryRunner.query(`ALTER TABLE "temporary_user" RENAME TO "user"`);
         await queryRunner.query(`CREATE TABLE "temporary_simulated" ("id" varchar(20) PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "qtdquestion" integer NOT NULL, "time" integer NOT NULL, "userCpf" varchar, "administratorCpf" varchar)`);
         await queryRunner.query(`INSERT INTO "temporary_simulated"("id", "nome", "created_at", "qtdquestion", "time", "userCpf", "administratorCpf") SELECT "id", "nome", "created_at", "qtdquestion", "time", "userCpf", "administratorCpf" FROM "simulated"`);
         await queryRunner.query(`DROP TABLE "simulated"`);
         await queryRunner.query(`ALTER TABLE "temporary_simulated" RENAME TO "simulated"`);
-        await queryRunner.query(`CREATE TABLE "temporary_administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')))`);
-        await queryRunner.query(`INSERT INTO "temporary_administrator"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "administrator"`);
+        await queryRunner.query(`CREATE TABLE "temporary_administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')))`);
+        await queryRunner.query(`INSERT INTO "temporary_administrator"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "administrator"`);
         await queryRunner.query(`DROP TABLE "administrator"`);
         await queryRunner.query(`ALTER TABLE "temporary_administrator" RENAME TO "administrator"`);
         await queryRunner.query(`CREATE TABLE "temporary_question" ("id" varchar(20) PRIMARY KEY NOT NULL, "disciplina" varchar NOT NULL, "ano" integer NOT NULL, "nivel" varchar NOT NULL, "instituicao" varchar NOT NULL, "banca" varchar NOT NULL, "conteudo" varchar NOT NULL, "assertiva" boolean NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "administratorCpf" varchar, CONSTRAINT "FK_0f721451f250ce6df4ea9f51a33" FOREIGN KEY ("administratorCpf") REFERENCES "administrator" ("cpf") ON DELETE NO ACTION ON UPDATE NO ACTION)`);
@@ -134,16 +134,16 @@ export class RelationUserQuestion1615754266094 implements MigrationInterface {
         await queryRunner.query(`INSERT INTO "question"("id", "disciplina", "ano", "nivel", "instituicao", "banca", "conteudo", "assertiva", "created_at", "administratorCpf") SELECT "id", "disciplina", "ano", "nivel", "instituicao", "banca", "conteudo", "assertiva", "created_at", "administratorCpf" FROM "temporary_question"`);
         await queryRunner.query(`DROP TABLE "temporary_question"`);
         await queryRunner.query(`ALTER TABLE "administrator" RENAME TO "temporary_administrator"`);
-        await queryRunner.query(`CREATE TABLE "administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "administrator"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "temporary_administrator"`);
+        await queryRunner.query(`CREATE TABLE "administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "administrator"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "temporary_administrator"`);
         await queryRunner.query(`DROP TABLE "temporary_administrator"`);
         await queryRunner.query(`ALTER TABLE "simulated" RENAME TO "temporary_simulated"`);
         await queryRunner.query(`CREATE TABLE "simulated" ("id" uuid PRIMARY KEY NOT NULL DEFAULT (uuid_generate_v4()), "nome" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()), "qtdquestion" integer NOT NULL, "time" integer NOT NULL, "userCpf" varchar, "administratorCpf" varchar)`);
         await queryRunner.query(`INSERT INTO "simulated"("id", "nome", "created_at", "qtdquestion", "time", "userCpf", "administratorCpf") SELECT "id", "nome", "created_at", "qtdquestion", "time", "userCpf", "administratorCpf" FROM "temporary_simulated"`);
         await queryRunner.query(`DROP TABLE "temporary_simulated"`);
         await queryRunner.query(`ALTER TABLE "user" RENAME TO "temporary_user"`);
-        await queryRunner.query(`CREATE TABLE "user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "user"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "temporary_user"`);
+        await queryRunner.query(`CREATE TABLE "user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "user"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "temporary_user"`);
         await queryRunner.query(`DROP TABLE "temporary_user"`);
         await queryRunner.query(`ALTER TABLE "notebook" RENAME TO "temporary_notebook"`);
         await queryRunner.query(`CREATE TABLE "notebook" ("id" uuid PRIMARY KEY NOT NULL DEFAULT (uuid_generate_v4()), "nome" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()), "userCpf" varchar)`);
@@ -179,12 +179,12 @@ export class RelationUserQuestion1615754266094 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_1a228f2f456f23e2f28a397951"`);
         await queryRunner.query(`DROP TABLE "notebook_questions_question"`);
         await queryRunner.query(`ALTER TABLE "administrator" RENAME TO "temporary_administrator"`);
-        await queryRunner.query(`CREATE TABLE "administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "administrator"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "temporary_administrator"`);
+        await queryRunner.query(`CREATE TABLE "administrator" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "administrator"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "temporary_administrator"`);
         await queryRunner.query(`DROP TABLE "temporary_administrator"`);
         await queryRunner.query(`ALTER TABLE "user" RENAME TO "temporary_user"`);
-        await queryRunner.query(`CREATE TABLE "user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
-        await queryRunner.query(`INSERT INTO "user"("cpf", "nome", "telefone", "created_at") SELECT "cpf", "nome", "telefone", "created_at" FROM "temporary_user"`);
+        await queryRunner.query(`CREATE TABLE "user" ("cpf" varchar PRIMARY KEY NOT NULL, "nome" varchar NOT NULL, "telefone" varchar NOT NULL, "email" varchar NOT NULL, "senha" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT (now()))`);
+        await queryRunner.query(`INSERT INTO "user"("cpf", "nome", "telefone", "email", "senha", "created_at") SELECT "cpf", "nome", "telefone", "email", "senha", "created_at" FROM "temporary_user"`);
         await queryRunner.query(`DROP TABLE "temporary_user"`);
     }
 

@@ -21,6 +21,14 @@ export class User1615680229936 implements MigrationInterface {
                 type: 'varchar',
               },
               {
+                name: 'email',
+                type: 'varchar',
+              },
+              {
+                name: 'senha',
+                type: 'varchar',
+              },
+              {
                 name: 'created_at',
                 type: 'timestamp',
                 default: 'now()',
