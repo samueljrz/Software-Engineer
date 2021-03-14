@@ -14,6 +14,12 @@ export class Administrator {
     @Column()
     telefone: string;
 
+    @Column()
+    email: string;
+
+    @Column()
+    senha: string;
+
     @CreateDateColumn()
     created_at: Date;
 

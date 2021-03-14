@@ -14,6 +14,12 @@ export class User {
 
     @Column()
     telefone: string;
+
+    @Column()
+    email: string;
+
+    @Column()
+    senha: string;
     
     @CreateDateColumn()
     created_at: Date;
