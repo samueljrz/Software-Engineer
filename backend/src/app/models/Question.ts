@@ -31,7 +31,7 @@ export class Question {
     @CreateDateColumn()
     created_at: Date;
 
-    @ManyToOne(() => Administrator, administrator => administrator.questions)
+    @ManyToOne(() => Administrator, administrator => administrator.questions)               
     administrator: Administrator;
 
 }
