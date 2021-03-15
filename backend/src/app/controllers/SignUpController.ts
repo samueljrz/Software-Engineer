@@ -3,6 +3,10 @@ import { getRepository, Timestamp } from 'typeorm'
 import { User } from '../models/User'
 
 class SignUpController {
+  index(req: Request, res: Response) {
+    return res.send({ userID: req.userId });
+  }
+  
   async store(req: Request, res: Response) {
     const repository = getRepository(User);
     const { cpf, nome, telefone, email, senha } = req.body;

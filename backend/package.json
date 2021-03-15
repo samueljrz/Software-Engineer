@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "dev": "npx nodemon --exec ts-node --files src/server.ts",
     "start": "ts-node src/server.ts",
     "dev:debug": "nodemon --inspect src/server.js",
     "queue": "nodemon src/queue.js",

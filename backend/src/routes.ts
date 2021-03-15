@@ -12,6 +12,7 @@ routes.post('/signin', SignInController.authenticate)
 
 routes.use(authMiddleware);
 
+routes.get('/index', SignUpController.index)
 //rotas
 
 export default routes;
