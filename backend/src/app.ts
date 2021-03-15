@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes';
 import { errors } from 'celebrate'
+import 'reflect-metadata';
+import './database/index';
 
 function app() {
   const server = express();

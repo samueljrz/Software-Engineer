@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToMany, OneToMany, JoinTable, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, CreateDateColumn, ManyToMany, OneToMany, JoinTable, BeforeInsert, BeforeUpdate } from 'typeorm';
 import { Question } from "./Question";
-import { Notebook } from './Notebook'
-import { Simulated } from './Simulated'
+import { Notebook } from './Notebook';
+import { Simulated } from './Simulated';
+import bcrypt from 'bcryptjs';
  
 @Entity()
 export class User {
@@ -23,6 +24,12 @@ export class User {
     
     @CreateDateColumn()
     created_at: Date;
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    hashSenha() {
+        this.senha = bcrypt.hashSync(this.senha, 8);
+    }
 
     @ManyToMany(() => Question)
     @JoinTable()
