@@ -14,7 +14,7 @@ class SignUpController {
     const userExistsEmail = await repository.findOne({ where: { email } });
     const userExistsCpf = await repository.findOne({ where: { cpf } });
 
-    if(userExistsEmail && userExistsCpf) {
+    if(userExistsEmail || userExistsCpf) {
       return res.sendStatus(409);
     }
 

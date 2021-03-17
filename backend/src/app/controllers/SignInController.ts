@@ -3,6 +3,7 @@ import { getRepository, Timestamp } from 'typeorm';
 import { User } from '../models/User';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import authConfig from '../../config/auth'
 
 class SignInController {
   async authenticate(req: Request, res: Response) {
@@ -21,7 +22,7 @@ class SignInController {
       return res.sendStatus(401);
     }
 
-    const token = jwt.sign({ id:user.cpf }, 'secret', { expiresIn: '1d' });
+    const token = jwt.sign({ id:user.cpf }, authConfig.secret, { expiresIn: authConfig.expiresIn });
 
     delete user.senha;
 

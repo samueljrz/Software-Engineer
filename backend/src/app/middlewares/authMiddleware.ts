@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import authConfig from '../../config/auth'
 
 interface TokenPayload {
   id: string;
@@ -9,16 +10,15 @@ interface TokenPayload {
 
 export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
   const { authorization } = req.headers;
-  console.log(authorization);
 
   if(!authorization) {
-    return res.sendStatus(401);
+    return res.status(401).json({ error: 'Token not provided' });
   }
 
   const token = authorization.replace('Bearer', '').trim();
 
   try{
-    const data = jwt.verify(token, 'secret');
+    const data = jwt.verify(token, authConfig.secret);
     
     const { id } = data as TokenPayload;
 
