@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import authConfig from '../../config/auth'
+import { verify } from 'jsonwebtoken';
+import authConfig from '@config/auth'
 
-interface TokenPayload {
-  id: string;
+interface ITokenPayload {
   iat: number;
   exp: number;
+  sub: string;
 }
 
 export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
@@ -15,14 +15,16 @@ export default function authMiddleware(req: Request, res: Response, next: NextFu
     return res.status(401).json({ error: 'Token not provided' });
   }
 
-  const token = authorization.replace('Bearer', '').trim();
+  const [, token] = authorization.split(' ');
 
   try{
-    const data = jwt.verify(token, authConfig.secret);
-    
-    const { id } = data as TokenPayload;
+    const decoded = verify(token, authConfig.jwt.secret);
 
-    req.userId = id;
+    const { sub } = decoded as ITokenPayload;
+
+    req.user = {
+      id: sub,
+    };
 
     return next();
   }catch(err) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getRepository, Timestamp } from 'typeorm'
+import { getRepository } from 'typeorm'
 import { User } from '../models/User'
 
 class SignUpController {
@@ -14,8 +14,8 @@ class SignUpController {
     const userExistsEmail = await repository.findOne({ where: { email } });
     const userExistsCpf = await repository.findOne({ where: { cpf } });
 
-    if(userExistsEmail || userExistsCpf) {
-      return res.sendStatus(409);
+    if(!!userExistsEmail || !!userExistsCpf) {
+      return res.status(409).json({ error: 'Email/Cpf já cadastrado' });
     }
 
     const user = repository.create({
@@ -25,6 +25,7 @@ class SignUpController {
       email,
       senha,
     })
+
     await repository.save(user);
 
     return res.json(user);

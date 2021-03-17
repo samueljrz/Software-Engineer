@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { getRepository, Timestamp } from 'typeorm';
 import { User } from '../models/User';
+import authConfig from '@config/auth'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import authConfig from '../../config/auth'
 
 class SignInController {
   async authenticate(req: Request, res: Response) {
@@ -13,16 +13,21 @@ class SignInController {
     const user = await repository.findOne({ where: { email } });
 
     if(!user) {
-      return res.sendStatus(401);
+      return res.status(401).json({ error: 'Email/Senha incorreta' });
     }
     
     const isValidPass = await bcrypt.compare(senha, user.senha)
 
     if(!isValidPass) {
-      return res.sendStatus(401);
+      return res.status(401).json({ error: 'Email/Senha incorreta' });
     }
 
-    const token = jwt.sign({ id:user.cpf }, authConfig.secret, { expiresIn: authConfig.expiresIn });
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = jwt.sign({}, secret, { 
+      subject: user.cpf, 
+      expiresIn 
+    });
 
     delete user.senha;
 
