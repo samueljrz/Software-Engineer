@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import authConfig from '@config/auth'
 
-interface ITockenPayload {
+interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
@@ -12,7 +12,7 @@ export default function authMiddleware(req: Request, res: Response, next: NextFu
   const { authorization } = req.headers;
 
   if(!authorization) {
-    return res.sendStatus(401);
+    return res.status(401).json({ error: 'Token not provided' });
   }
 
   const [, token] = authorization.split(' ');
@@ -20,7 +20,7 @@ export default function authMiddleware(req: Request, res: Response, next: NextFu
   try{
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded as ITockenPayload;
+    const { sub } = decoded as ITokenPayload;
 
     req.user = {
       id: sub,
