@@ -4,7 +4,7 @@ import { User } from '../models/User'
 
 class SignUpController {
   index(req: Request, res: Response) {
-    return res.send({ userID: req.userId });
+    return res.send({ userID: req.user.id });
   }
   
   async store(req: Request, res: Response) {
