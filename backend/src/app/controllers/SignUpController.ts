@@ -4,7 +4,9 @@ import { User } from '../models/User'
 
 class SignUpController {
   async store(req: Request, res: Response) {
+      
     const repository = getRepository(User);
+
     const { cpf, nome, telefone, email, senha } = req.body;
 
     const userExistsEmail = await repository.findOne({ where: { email } });
@@ -20,7 +22,7 @@ class SignUpController {
       telefone,
       email,
       senha,
-    })
+    })  
     await repository.save(user);
 
     return res.json(user);
