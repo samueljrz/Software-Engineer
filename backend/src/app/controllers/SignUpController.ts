@@ -27,7 +27,6 @@ class SignUpController {
       email,
       senha,
     })  
-    })
 
     await repository.save(user);
 
