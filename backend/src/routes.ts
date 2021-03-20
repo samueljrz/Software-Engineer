@@ -17,5 +17,7 @@ routes.get('/question/:id', QuestionController.showDisciplina)
 routes.post('/question', QuestionController.store)
 
 routes.use(authMiddleware);
+routes.get('/index', SignUpController.index)
+//rotas
 
 export default routes;
