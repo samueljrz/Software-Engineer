@@ -4,12 +4,14 @@ import authMiddleware from './app/middlewares/authMiddleware';
 
 import SignUpController from './app/controllers/SignUpController'
 import SignInController from './app/controllers/SignInController'
+import Administrator from './app/controllers/AdministratorController'
 
 import QuestionController from './app/controllers/QuestionControllers'
 
 const routes = Router();
 
 routes.post('/signup', SignUpController.store)
+routes.post('/administrator', Administrator.store)
 routes.post('/signin', SignInController.authenticate)
 
 routes.get('/question', QuestionController.show)
