@@ -11,7 +11,7 @@ class SignUpController {
       
     const repository = getRepository(User);
 
-    const { cpf, nome, telefone, email, senha } = req.body;
+    const { cpf, firstName: nome, phoneNumber: telefone, email, password: senha } = req.body;
 
     const userExistsEmail = await repository.findOne({ where: { email } });
     const userExistsCpf = await repository.findOne({ where: { cpf } });

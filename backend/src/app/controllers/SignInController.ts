@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { getRepository, Timestamp } from 'typeorm';
 import { User } from '../models/User';
-import authConfig from '@config/auth'
+import authConfig from '../../config/auth'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 class SignInController {
   async authenticate(req: Request, res: Response) {
     const repository = getRepository(User);
-    const { email, senha } = req.body;
+    const { email, password: senha } = req.body;
 
     const user = await repository.findOne({ where: { email } });
 
