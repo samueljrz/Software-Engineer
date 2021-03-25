@@ -36,7 +36,7 @@ export const Team = (props) => {
               <img src="https://avatars.githubusercontent.com/u/37377587?v=4" alt='...' className='team-img' />
               <div className='caption'>
                 <h4>Guilherme Willian</h4>
-                <p>Full Stack Developer & <br/> Designer </p>
+                <p>Full Stack Developer & <br/> Designer</p>
                 <div className='divicon'>
                   <a href= 'https://github.com/willsaraiva' target='_blank'>
                         <GitHubIcon className='icongit'/>
@@ -56,10 +56,10 @@ export const Team = (props) => {
                 <h4>Francisco Valdemir</h4>
                 <p>Designer</p>
                 <div className='divicon'>
-                  <a href= 'https://github.com/vjuniorr' target='_blank'>
+                  <a href= 'https://github.com/vjuniorr' target='_blank' style={{marginTop:"20px"}}>
                         <GitHubIcon className='icongit'/>
                   </a>
-                  <a href= 'https://www.linkedin.com/in/valdemi-junior-5814011b8/' target='_blank'>
+                  <a href= 'https://www.linkedin.com/in/valdemi-junior-5814011b8/' target='_blank' style={{marginTop:"20px"}}>
                         <LinkedInIcon className='iconlink' />
                   </a>
                 </div>
@@ -74,10 +74,10 @@ export const Team = (props) => {
                 <h4>Francisco Jerônimo</h4>
                 <p>Tester</p>
                 <div className='divicon'>
-                  <a href= 'https://github.com/jeronimojrqxd' target='_blank'>
+                  <a href= 'https://github.com/jeronimojrqxd' target='_blank' style={{marginTop:"20px"}}>
                         <GitHubIcon className='icongit'/>
                   </a>
-                  <a href= 'https://www.linkedin.com/in/francisco-jer%C3%B4nimo-354375174/' target='_blank'>
+                  <a href= 'https://www.linkedin.com/in/francisco-jer%C3%B4nimo-354375174/' target='_blank'  style={{marginTop:"20px"}}>
                         <LinkedInIcon className='iconlink' />
                   </a>
                 </div>
