@@ -3,7 +3,8 @@ const styles = (theme) => ({
 		marginTop: theme.spacing(6),
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		marginTop: '124px'
 	},
 	avatar: {
 		margin: theme.spacing(1),
@@ -11,7 +12,7 @@ const styles = (theme) => ({
 	},
 	form: {
 		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(3)
+		marginTop: '24px'
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2)

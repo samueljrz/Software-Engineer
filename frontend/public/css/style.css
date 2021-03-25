@@ -66,7 +66,6 @@ hr {
 }
 /* Navigation */
 #menu {
-	padding: 15px;
 	transition: all 0.8s;
 }
 #menu.navbar-default {
@@ -609,6 +608,22 @@ color: #777;
 	box-shadow: 10px 10px 10px rgba(0,0,0,.05);
 }
 
+.icongit {
+	transition: all 0.3s;
+}
+
+ .icongit:hover {
+	color: black
+}
+
+.iconlink {
+	transition: all 0.3s;
+}
+
+.iconlink:hover {
+	color: #0e76a8
+}
+
 #contact .social .iconbutton {
 	font-size: 22px;
 	width: 48px;
@@ -622,4 +637,9 @@ color: #777;
 
 #contact .social .iconbutton:hover {
 	background-color: black;
+}
+.divicon {
+	display: flex;
+	gap: 16px;
+	justify-content: center;
 }

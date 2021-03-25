@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { TopBar } from '../TopBar/topbar'
 import axios from 'axios';
 
 import styles from './styles';
@@ -71,6 +72,7 @@ class Login extends Component {
 		const { errors, loading } = this.state;
 		return (
 			<Container component="main" maxWidth="xs">
+				<TopBar />
 				<CssBaseline />
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}>
