@@ -17,7 +17,7 @@ export const Features = (props) => {
                   <p>{d.text}</p>
                 </div>
               ))
-            : 'Loading...'}
+            : 'Loading'}
         </div>
       </div>
     </div>
