@@ -1,7 +1,5 @@
 const styles = (theme) => ({
 	paper: {
-		backgroundImage: `url(${Image})`,
-		opacity: 0.75,
 		marginTop: theme.spacing(16),
 		display: 'flex',
 		flexDirection: 'column',

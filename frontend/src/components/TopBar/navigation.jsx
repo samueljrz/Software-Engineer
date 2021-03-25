@@ -29,12 +29,12 @@ export const Navigation = (props) => {
         >
           <ul id="usul" className='nav navbar-nav navbar-right'>
             <li>
-                <Link id="button-custom" className='btn-custom' href="/">
+                <Link id="button-custom" className='btn-custom' href="/signup">
                   Registre-se
                 </Link>
               </li>
               <li>
-                <Link id="button-custom" className='btn-custom' href="/">
+                <Link id="button-custom" className='btn-custom' href="/signin">
                   Login
                 </Link>
               </li>
