@@ -288,7 +288,7 @@ header .intro-text {
 }
 #about img {
 	width: 520px;
-	margin-top: 10px;
+	margin-top: 80px;
 	background: #fff;
 	border-right: 0;
 	box-shadow: 0 0 50px rgba(0,0,0,0.06);
@@ -433,6 +433,7 @@ header .intro-text {
 }
 #team .team-img {
 	width: 240px;
+	border-radius: 50%;
 }
 #team .thumbnail {
 	background: transparent;
