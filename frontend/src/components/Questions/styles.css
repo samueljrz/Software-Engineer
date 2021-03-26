@@ -1,0 +1,54 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  margin-top: 40px;
+  padding: 50px 10px 10px 10px;
+  box-shadow: inset 0 0 3px #555, 0 0 4px #555;
+  border-radius: 10px;
+}
+
+.container-question {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: auto;
+  background-color: white;
+  
+}
+
+.container-content {
+  display: grid;
+  height: 30px;
+  width: auto;
+  grid-template-columns: 1fr 9fr;
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.container-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr 4fr;
+  margin: 10px 0px;
+}
+
+.container-proof {
+  width: 90%;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.line {
+  height: auto;
+  border: solid 1px #555;
+}
+
+.questionid {
+  background-color: #333;
+  border-radius: 10px;
+  color: white;
+}

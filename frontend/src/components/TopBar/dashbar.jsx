@@ -79,7 +79,7 @@ export const TopBar = (props) => {
         >
           <ul className='nav navbar-nav navbar-right'>
             <li>
-              <a style={{color:"#555", backgroundColor: "white"}} href=''>
+              <a style={{color:"#555", backgroundColor: "white"}} href='/questions'>
                 Questões
               </a>
             </li>
