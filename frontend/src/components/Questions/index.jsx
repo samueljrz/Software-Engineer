@@ -13,7 +13,7 @@ class Question extends Component {
 	render() {
 		return (
       <div className="main">
-        <div className="container">
+        <div className="container-main">
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
@@ -33,7 +33,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container-main">
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
@@ -53,7 +53,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container-main">
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
@@ -73,7 +73,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container-main">
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
@@ -93,7 +93,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-        <div className="container" style={{marginBottom: "40px"}}>
+        <div className="container-main">
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
