@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -6,11 +7,23 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
-//import axios from 'axios';
+import axios from 'axios';
 
 import './styles.css'
 
 function Question() { 
+    const [questions, setQuestions] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get('http://localhost:3333/question')
+        .then((response) => {
+          setQuestions(response.data);
+        })
+        .catch((error) => {				
+          console.log('error');
+        });
+    }, [])
 
     const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -50,22 +63,24 @@ function Question() {
 		return (
       <div className="main">
         <div className="container-main">
-          <div className="container-question"> 
+          {questions.map((question, index) => (
+            <div className="container-question"> 
             <div className="container-content">
-              <div className="questionid">questao id </div>
+              <div className="questionid">{question.id}</div>
             </div>
             <div className="container-info">
-              <span>Ano: 2020</span>
-              <span>Disciplina: Portugues</span>
-              <span>Banca: CESPE</span>
-              <span>Nivel: Superior</span>
-              <span>Instituição: Policia Federal</span>
+                <ul className="container-info-list">
+                  <li key="1"><span>Disciplina: {question.disciplina}</span></li>
+                  <li key="2"><span>Banca: {question.banca}</span></li>
+                  <li key="3"><span>Instituição: {question.instituicao}</span></li>
+                  <li key="4"><span>Ano: {question.ano}</span></li>
+                </ul>
             </div>
             <div className="line"></div>
             <div className="container-proof">
-              <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
+              <div>"{question.conteudo}"</div>
                 <form onSubmit={handleSubmit}>
-                  <FormControl component="fieldset" error={error} className={classes.formControl}>
+                  <FormControl component="fieldset" className={classes.formControl}>
                     <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
                       <FormControlLabel value="best" control={<Radio />} label="Certo" />
                       <FormControlLabel value="worst" control={<Radio />} label="Errado" />
@@ -78,126 +93,7 @@ function Question() {
                 </form>
             </div>
           </div>
-        </div>
-        <div className="container-main">
-          <div className="container-question"> 
-            <div className="container-content">
-              <div className="questionid">questao id </div>
-            </div>
-            <div className="container-info">
-              <span>Ano: 2020</span>
-              <span>Disciplina: Portugues</span>
-              <span>Banca: CESPE</span>
-              <span>Nivel: Superior</span>
-              <span>Instituição: Policia Federal</span>
-            </div>
-            <div className="line"></div>
-            <div className="container-proof">
-              <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <form onSubmit={handleSubmit}>
-                  <FormControl component="fieldset" error={error} className={classes.formControl}>
-                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
-                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
-                    </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
-                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
-                      Check Answer
-                    </Button>
-                  </FormControl>
-                </form>
-            </div>
-          </div>
-        </div>
-        <div className="container-main">
-          <div className="container-question"> 
-            <div className="container-content">
-              <div className="questionid">questao id </div>
-            </div>
-            <div className="container-info">
-              <span>Ano: 2020</span>
-              <span>Disciplina: Portugues</span>
-              <span>Banca: CESPE</span>
-              <span>Nivel: Superior</span>
-              <span>Instituição: Policia Federal</span>
-            </div>
-            <div className="line"></div>
-            <div className="container-proof">
-              <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <form onSubmit={handleSubmit}>
-                  <FormControl component="fieldset" error={error} className={classes.formControl}>
-                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
-                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
-                    </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
-                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
-                      Check Answer
-                    </Button>
-                  </FormControl>
-                </form>
-            </div>
-          </div>
-        </div>
-        <div className="container-main">
-          <div className="container-question"> 
-            <div className="container-content">
-              <div className="questionid">questao id </div>
-            </div>
-            <div className="container-info">
-              <span>Ano: 2020</span>
-              <span>Disciplina: Portugues</span>
-              <span>Banca: CESPE</span>
-              <span>Nivel: Superior</span>
-              <span>Instituição: Policia Federal</span>
-            </div>
-            <div className="line"></div>
-            <div className="container-proof">
-              <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <form onSubmit={handleSubmit}>
-                  <FormControl component="fieldset" error={error} className={classes.formControl}>
-                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
-                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
-                    </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
-                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
-                      Check Answer
-                    </Button>
-                  </FormControl>
-                </form>
-            </div>
-          </div>
-        </div>
-        <div className="container-main">
-          <div className="container-question"> 
-            <div className="container-content">
-              <div className="questionid">questao id </div>
-            </div>
-            <div className="container-info">
-              <span>Ano: 2020</span>
-              <span>Disciplina: Portugues</span>
-              <span>Banca: CESPE</span>
-              <span>Nivel: Superior</span>
-              <span>Instituição: Policia Federal</span>
-            </div>
-            <div className="line"></div>
-            <div className="container-proof">
-              <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <form onSubmit={handleSubmit}>
-                  <FormControl component="fieldset" error={error} className={classes.formControl}>
-                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
-                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
-                    </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
-                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
-                      Check Answer
-                    </Button>
-                  </FormControl>
-                </form>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 		);
