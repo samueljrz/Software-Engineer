@@ -53,10 +53,10 @@ function Question() {
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
-              <div> disciplina </div>
             </div>
             <div className="container-info">
               <span>Ano: 2020</span>
+              <span>Disciplina: Portugues</span>
               <span>Banca: CESPE</span>
               <span>Nivel: Superior</span>
               <span>Instituição: Policia Federal</span>
@@ -83,10 +83,10 @@ function Question() {
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
-              <div> disciplina </div>
             </div>
             <div className="container-info">
               <span>Ano: 2020</span>
+              <span>Disciplina: Portugues</span>
               <span>Banca: CESPE</span>
               <span>Nivel: Superior</span>
               <span>Instituição: Policia Federal</span>
@@ -94,8 +94,18 @@ function Question() {
             <div className="line"></div>
             <div className="container-proof">
               <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <div>assertivas</div>
-              <div>button</div>
+              <form onSubmit={handleSubmit}>
+                  <FormControl component="fieldset" error={error} className={classes.formControl}>
+                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
+                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+                      Check Answer
+                    </Button>
+                  </FormControl>
+                </form>
             </div>
           </div>
         </div>
@@ -103,10 +113,10 @@ function Question() {
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
-              <div> disciplina </div>
             </div>
             <div className="container-info">
               <span>Ano: 2020</span>
+              <span>Disciplina: Portugues</span>
               <span>Banca: CESPE</span>
               <span>Nivel: Superior</span>
               <span>Instituição: Policia Federal</span>
@@ -114,8 +124,18 @@ function Question() {
             <div className="line"></div>
             <div className="container-proof">
               <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <div>assertivas</div>
-              <div>button</div>
+              <form onSubmit={handleSubmit}>
+                  <FormControl component="fieldset" error={error} className={classes.formControl}>
+                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
+                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+                      Check Answer
+                    </Button>
+                  </FormControl>
+                </form>
             </div>
           </div>
         </div>
@@ -123,10 +143,10 @@ function Question() {
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
-              <div> disciplina </div>
             </div>
             <div className="container-info">
               <span>Ano: 2020</span>
+              <span>Disciplina: Portugues</span>
               <span>Banca: CESPE</span>
               <span>Nivel: Superior</span>
               <span>Instituição: Policia Federal</span>
@@ -134,8 +154,18 @@ function Question() {
             <div className="line"></div>
             <div className="container-proof">
               <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <div>assertivas</div>
-              <div>button</div>
+              <form onSubmit={handleSubmit}>
+                  <FormControl component="fieldset" error={error} className={classes.formControl}>
+                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
+                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+                      Check Answer
+                    </Button>
+                  </FormControl>
+                </form>
             </div>
           </div>
         </div>
@@ -143,10 +173,10 @@ function Question() {
           <div className="container-question"> 
             <div className="container-content">
               <div className="questionid">questao id </div>
-              <div> disciplina </div>
             </div>
             <div className="container-info">
               <span>Ano: 2020</span>
+              <span>Disciplina: Portugues</span>
               <span>Banca: CESPE</span>
               <span>Nivel: Superior</span>
               <span>Instituição: Policia Federal</span>
@@ -154,8 +184,18 @@ function Question() {
             <div className="line"></div>
             <div className="container-proof">
               <div>“Trata-se de um crédito adicional destinado a suprir despesas urgentes e imprevistas, não dependem de fonte de recursos e independem de autorização legislativa, devendo ser abertos por Medida Provisória (União) ou Decreto do Poder Executivo (Estados e Municípios) que devem dar imediata ciência ao Poder Legislativo.” As informações correspondem a crédito:</div>
-              <div>assertivas</div>
-              <div>button</div>
+              <form onSubmit={handleSubmit}>
+                  <FormControl component="fieldset" error={error} className={classes.formControl}>
+                    <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+                      <FormControlLabel value="best" control={<Radio />} label="Certo" />
+                      <FormControlLabel value="worst" control={<Radio />} label="Errado" />
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+                      Check Answer
+                    </Button>
+                  </FormControl>
+                </form>
             </div>
           </div>
         </div>
