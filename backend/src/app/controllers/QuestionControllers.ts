@@ -8,23 +8,25 @@ class QuestionController {
 
     const repository = getRepository(Question);
 
-    const { page = 1} = req.params
+    //const { page = 1} = req.params
 
     // console.log(page)
 
-    const { disciplina, ano, nivel, instituicao, banca, conteudo = null, assertiva } = req.query
+    //const { disciplina, ano, nivel, instituicao, banca, conteudo = null, assertiva } = req.query
     
-    const listQuestion = await repository.find({
-      where: {
-        disciplina: disciplina,
-        ano: ano,
-        conteudo: conteudo,
-        banca: banca
-      } 
+    // const listQuestion = await repository.find({
+    //   where: {
+    //     disciplina: disciplina,
+    //     ano: ano,
+    //     conteudo: conteudo,
+    //     banca: banca
+    //   } 
 
-    })
+    // })
 
-    console.log(listQuestion)
+    const listQuestion = await repository.find()
+
+    //console.log(listQuestion)
 
     return res.json(listQuestion);
   }
@@ -33,17 +35,19 @@ class QuestionController {
 
     const repository = getRepository(Question);
 
-    const { id : page = 1 } = req.params
-    const limitItens = 5
-    amount: Number
+    //const { id : page = 1 } = req.params
+    //const limitItens = 5
+    //amount: Number
 
     // console.log(page)
 
-    console.log(page) 
+    //console.log(page) 
 
     const { disciplina } = req.query
 
-    var listItens = await repository.findAndCount({
+    console.log(disciplina)
+
+    var listItens = await repository.find({
       where: {
         disciplina: disciplina
       }
@@ -66,21 +70,20 @@ class QuestionController {
     //   return result
     // }
     
-    // console.log(listQuestion)
+    // if(listItens) {
+    //   return res.status(409).json({ error: 'nao existe essa disciplina' });
+    // }
 
-    // return res.json(listQuestion);
+     console.log(listItens)
+
+     return res.json(listItens);
   }
 
   async store(req: Request, res: Response) {
     
     const repository = getRepository(Question);
 
-    const { disciplina, ano, nivel, instituicao, banca, conteudo, assertivaString } = req.body;
-    
-    var assertiva
-      
-    if ( assertivaString == 'V' ) assertiva = true  
-    else assertiva = false
+    const { disciplina, ano, nivel, instituicao, banca, conteudo, assertiva } = req.body;
 
     const question = repository.create({
       disciplina,
@@ -98,6 +101,23 @@ class QuestionController {
 
     return res.json(question);
   }
+
+  async delete(req: Request, res: Response) {
+    const repository = getRepository(Question);
+
+    const { id } = req.params
+
+    const questionExists = await repository.findOne({ where: { id } });
+
+    // if(!!questionExists) {
+    //   return res.status(409).json({ error: 'questão nao existe' });
+    // }
+
+    await repository.remove(questionExists);
+
+    return res.status(200).json({status: "deleted"})
+  }
+
 }
 
 export default new QuestionController();

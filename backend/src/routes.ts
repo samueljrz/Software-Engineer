@@ -17,8 +17,9 @@ routes.post('/signin', SignInController.authenticate)
 routes.get('/question', QuestionController.show)
 routes.get('/question/:id', QuestionController.showDisciplina)
 routes.post('/question', QuestionController.store)
+routes.delete('/question/:id', QuestionController.delete)
 
-routes.use(authMiddleware);
+//routes.use(authMiddleware);
 routes.get('/index', SignUpController.index)
 //rotas
 

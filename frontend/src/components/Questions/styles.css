@@ -12,37 +12,69 @@
 }
 
 
-
 .container-question {
   display: grid;
   height: 100%;
   width: 100%;
   grid-template-columns: auto;
   background-color: white;
-  
+
 }
 
 .container-content {
   display: grid;
   height: 30px;
   width: auto;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: 1fr;
   background-image: linear-gradient(to right, #F58072 0%, #DB7286 100%);
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   border-radius: 10px;
   align-items: center;
 }
 
+
 .container-info {
+  margin: 1% 0% 0% 1%;
+}
+
+/* .container-info-list {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 4fr 4fr;
   margin: 10px 0px;
+} */
+
+.container-info-list {
+  list-style: none;
+  float: left;
 }
 
+.container-info-list li {
+  position: relative;
+  float: left;
+  border-right: 1px solid black;
+}
+
+.container-info-list li span {color: black; text-decoration: none; padding: 5px 10px; display: block;}
+
+.container-info-list li  ul{
+  position:absolute; 
+  top:25px; 
+  left:0;
+  background-color:#fff; 
+  display:none;
+}
+
+.container-info-list li ul li{
+  border:1px solid #c0c0c0; 
+  display:block; 
+  width:150px;
+  }
+
+
 .container-proof {
-  width: 90%;
-  margin-top: 20px;
-  padding: 20px;
+  width: 100%;
+  margin-top: 0%;
+  padding: 2%;
 }
 
 .line {
